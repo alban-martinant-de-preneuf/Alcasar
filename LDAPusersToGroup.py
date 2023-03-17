@@ -5,25 +5,23 @@ server = 'ldap://192.168.182.3:389'
 
 # Créer une connection avec le LDAP
 ldap = ldap3.Server(server)
-conn = ldap3.Connection(ldap)
+conn_LDAP = ldap3.Connection(ldap)
 
 # Se connecter à l'annuaire anonymement 
-conn.bind()
+conn_LDAP.bind()
 
 # Sinon se connecter avec un utilisateur
-# conn.bind('cn=admin,dc=mondomaine,dc=lan', 'password')
+# conn_LDAP.bind('cn=admin,dc=mondomaine,dc=lan', 'password')
 
-# Rechercher les objets posixAccount
-conn.search('dc=mondomaine,dc=lan', '(objectClass=posixAccount)', attributes=['uid'])
-
-# Récupérer les uids
+# Rechercher les objets posixAccount et récupérer les uids
+conn_LDAP.search('dc=mondomaine,dc=lan', '(objectClass=posixAccount)', attributes=['uid'])
 uids = []
 
-for entry in conn.entries:
+for entry in conn_LDAP.entries:
     uids.append(entry.uid.value)
 
 # Fermer la connection avec le LDAP
-conn.unbind()
+conn_LDAP.unbind()
 
 # Récupérer le mot de passe de connexion à la DB
 rootPassword = ""

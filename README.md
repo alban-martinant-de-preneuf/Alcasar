@@ -1,6 +1,6 @@
-# Alcasar Project
+# Alcasar LDAP users to group
 
-The Alcasar project is a script that interacts with LDAP and MySQL to automate the process of adding users to an LDAP group. The script searches for posixAccount objects, retrieves their uids, and then adds them to the specified LDAP group in the MySQL database used by Alcasar.
+This project is a script that interacts with LDAP and MySQL to automate the process of adding users to an LDAP group. The script searches for posixAccount objects, retrieves their uids, and then adds them to the specified LDAP group in the MySQL database used by Alcasar.
 
 ## Project Overview
 
